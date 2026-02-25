@@ -1,0 +1,33 @@
+{
+  "name": "morpheus-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "chat": "latest",
+    "@chat-adapter/slack": "latest",
+    "@chat-adapter/discord": "latest",
+    "@chat-adapter/github": "latest",
+    "@chat-adapter/linear": "latest",
+    "@chat-adapter/state-redis": "latest",
+    "@chat-adapter/state-memory": "latest",
+    "@ai-sdk/openai-compatible": "latest",
+    "ai": "latest",
+    "next": "15",
+    "react": "^19",
+    "react-dom": "^19",
+    "zod": "^3"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

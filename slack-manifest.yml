@@ -1,0 +1,84 @@
+# =============================================================================
+# Slack App Manifest for Morpheus Assistant
+# =============================================================================
+# Use this manifest to create your Slack app at https://api.slack.com/apps
+#
+# Steps:
+# 1. Go to https://api.slack.com/apps
+# 2. Click "Create New App" > "From an app manifest"
+# 3. Select your workspace
+# 4. Paste this YAML manifest
+# 5. Replace YOUR_DOMAIN with your deployment URL (e.g., morpheus-assistant.vercel.app)
+# 6. Review and create the app
+# 7. Install the app to your workspace
+# 8. Copy the Bot Token and Signing Secret to your .env.local
+
+display_information:
+  name: Morpheus Assistant
+  description: AI assistant powered by the Morpheus decentralized AI network
+  background_color: "#0a0a0a"
+  long_description: |
+    Morpheus Assistant is an AI-powered chatbot that leverages the Morpheus
+    decentralized AI network for inference. It can answer questions, help with
+    coding, writing, analysis, and much more.
+
+    Features:
+    - Multi-turn conversations in threads
+    - Streaming AI responses
+    - Slash commands (/ask, /morpheus)
+    - Interactive cards with helpful information
+    - Works alongside other bots in your workspace
+
+features:
+  app_home:
+    home_tab_enabled: false
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  bot_user:
+    display_name: Morpheus Assistant
+    always_online: true
+  slash_commands:
+    - command: /ask
+      url: https://YOUR_DOMAIN/api/webhooks/slack
+      description: Ask Morpheus a question
+      usage_hint: "[your question]"
+      should_escape: false
+    - command: /morpheus
+      url: https://YOUR_DOMAIN/api/webhooks/slack
+      description: Morpheus Assistant commands
+      usage_hint: "[help|models|about]"
+      should_escape: false
+
+oauth_config:
+  scopes:
+    bot:
+      - app_mentions:read
+      - channels:history
+      - channels:read
+      - chat:write
+      - groups:history
+      - groups:read
+      - im:history
+      - im:read
+      - im:write
+      - mpim:history
+      - mpim:read
+      - reactions:read
+      - reactions:write
+      - users:read
+
+settings:
+  event_subscriptions:
+    request_url: https://YOUR_DOMAIN/api/webhooks/slack
+    bot_events:
+      - app_mention
+      - message.channels
+      - message.groups
+      - message.im
+      - message.mpim
+  interactivity:
+    is_enabled: true
+    request_url: https://YOUR_DOMAIN/api/webhooks/slack
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
